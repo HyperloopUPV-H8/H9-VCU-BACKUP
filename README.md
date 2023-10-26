@@ -1,2 +1,1 @@
-# VCU
-The H9 vehicle control unit
+The H9 Vehicle Control Unit
