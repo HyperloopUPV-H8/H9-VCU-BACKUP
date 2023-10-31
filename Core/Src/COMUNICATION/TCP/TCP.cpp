@@ -5,15 +5,14 @@
  *      Author: amancio
  */
 
-#include "ComunicationUtils.hpp"
 #include "TCP.hpp"
 
 VCU::TCP::TCP() {
-	VCU::TCP::ControlStationSocket = ServerSocket(VCU::VCU::VCU_IP, VCU::SERVER_PORT);
-	VCU::TCP::OBCCUSocket = Socket(VCU::VCU::VCU_IP, VCU::CLIENT_PORT, VCU::OBCCU_IP, VCU::SERVER_PORT);
-	VCU::TCP::BMSLSocket = Socket(VCU::VCU::VCU_IP, VCU::CLIENT_PORT, VCU::BMSL_IP, VCU::SERVER_PORT);
-	VCU::TCP::PCUSocket = Socket(VCU::VCU::VCU_IP, VCU::CLIENT_PORT, VCU::PCU_IP, VCU::SERVER_PORT);
-	VCU::TCP::LCUSocket = Socket(VCU::VCU::VCU_IP, VCU::CLIENT_PORT, VCU::LCU_MASTER_IP, VCU::SERVER_PORT);
+	ControlStationSocket = ServerSocket(VCU_IP, SERVER_PORT);
+	OBCCUSocket = Socket(VCU_IP, CLIENT_PORT,OBCCU_IP,SERVER_PORT);
+	BMSLSocket = Socket(VCU_IP, CLIENT_PORT, BMSL_IP, SERVER_PORT);
+	PCUSocket = Socket(VCU_IP, CLIENT_PORT, PCU_IP, SERVER_PORT);
+	LCUSocket = Socket(VCU_IP, CLIENT_PORT, LCU_MASTER_IP, SERVER_PORT);
 }
 
 VCU::TCP::sendToControlStation(Order& order) {

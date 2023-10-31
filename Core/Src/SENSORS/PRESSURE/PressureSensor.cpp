@@ -5,12 +5,21 @@
  *      Author: amancio
  */
 
-#include <SENSORS/PRESSURE/PressureSensor.hpp>
+#include "PressureSensor.hpp"
+
+VCU::PressureSensor::PressureSensor(Pin pin, float slope, float offset) : 
+	pressureSensor(
+		pin,
+		slope,
+		offset,
+		&pressure
+	)
+{}
 
 float VCU::PressureSensor::getPressure() {
-	return VCU::PressureSensor::enviromental_preassure;
+	return pressure;
 }
 
 void VCU::PressureSensor::read() {
-	VCU::PressureSensor::pressureSensor.read();
+	pressureSensor.read();
 }

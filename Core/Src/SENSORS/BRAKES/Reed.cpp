@@ -7,10 +7,14 @@
 
 #include "Reed.hpp"
 
-VCU::Reed::read(){
-	VCU::Reed::reed.read();
+VCU::Reed::Reed(Pin& pin) : reed(pin, (PinState*)reedState) {
+	reedState = ReedState::EXTENDED;
 }
 
-VCU::Reed::ReedState getReedState() {
-	return VCU::Reed::ReedState;
+void VCU::Reed::read(){
+	reed.read();
+}
+
+VCU::Reed::ReedState VCU::Reed::getReedState() {
+	return reedState;
 }

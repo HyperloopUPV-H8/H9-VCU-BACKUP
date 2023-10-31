@@ -5,7 +5,7 @@
  *      Author: amancio
  */
 
-#include <STATE_MACHINE/VCUStateMachine.hpp>
+#include <VCUStateMachine.hpp>
 
 VCU::VCUStateMachine::VCUStateMachine() {
 }

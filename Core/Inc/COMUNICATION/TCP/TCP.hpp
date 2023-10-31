@@ -8,6 +8,7 @@
 #pragma once
 
 #include "ServerSocket.hpp"
+#include "Socket.hpp"
 #include "ComunicationUtils.hpp"
 
 namespace VCU {

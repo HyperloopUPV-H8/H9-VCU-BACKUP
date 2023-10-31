@@ -7,17 +7,17 @@
 
 #include "RegulatorActuator.hpp"
 
-VCU::RegulatorActuator::RegulatorActuator(Pin& PWMPin, float& pressure) :
-	VCU::RegulatorActuator::pwm(PWMPin),
-	VCU::RegulatorActuator::pressure(pressure)
+VCU::RegulatorActuator::RegulatorActuator(Pin& PWMPin, float pressure) :
+	pwm(PWMPin),
+	pressure(pressure)
 {
-	  VCU::RegulatorActuator::pwm.set_frequency(VCU::RegulatorActuator::pwm_frequency);
-	  VCU::RegulatorActuator::pwm.set_duty_cycle(calculate_duty_cycle(pressure));
-	  VCU::RegulatorActuator::pwm.turn_on();
+	  pwm.set_frequency(VCU::RegulatorActuator::pwm_frequency);
+	  pwm.set_duty_cycle(calculate_duty_cycle(pressure));
+	  pwm.turn_on();
 }
 
 VCU::RegulatorActuator::RegulatorActuator(Pin& PWMPin) {
-	VCU::RegulatorActuator::RegulatorActuator(PWMPin, 1.1f);
+	RegulatorActuator(PWMPin, 1.1f);
 }
 
 void VCU::RegulatorActuator::setPressure(float newPressure) {
@@ -29,11 +29,10 @@ void VCU::RegulatorActuator::setPressure(float newPressure) {
 	  pwm.set_duty_cycle(calculate_duty_cycle(pressure));
 }
 
-
-float VCU::RegulatorActuator::getPressure(float setPressure) {
-	return VCU::RegulatorActuator::pressure;
+float VCU::RegulatorActuator::getPressure() {
+	return pressure;
 }
 
-static float VCU::RegulatorActuator::calculate_duty_cycle(float pressure){
+float VCU::RegulatorActuator::calculate_duty_cycle(float pressure){
 	return ((1.6f * pressure + 4.0f) * ( 0.168f / 3.3f)) * 100.0f;
 }

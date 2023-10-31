@@ -16,7 +16,7 @@ namespace VCU {
 			RETRACTED
 		};
 
-		Reed(Pin& pin, ) : reed(pin, (PinState*)reedState){}
+		Reed(Pin& pin);
 
 		void read();
 		ReedState getReedState();
@@ -24,6 +24,6 @@ namespace VCU {
 	private:
 
 		DigitalSensor reed;
-		ReedState* reedState = EXTENDED;
+		ReedState reedState;
 	};
 }

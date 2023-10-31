@@ -5,29 +5,32 @@
  *      Author: amancio
  */
 
-#include <BRAKES/ACTUATORS/ValveActuator.hpp>
+#include "ValveActuator.hpp"
 
-VCU::ValveActuator::ValveActuator(Pin& pin, State valveState) {
+VCU::ValveActuator::ValveActuator(Pin& pin, ValveState valveState) {
 
-	VCU::ValveActuator::valveOutput = pin;
-	VCU::ValveActuator::state = valveState;
+	valveOutput = pin;
+	state = valveState;
 
 	switch(valveState) {
-		case State::CLOSED:
-			VCU::ValveActuator::close();
+		case ValveState::CLOSED:
+			close();
 			break;
-		case State::OPEN:
-			VCU::ValveActuator::open();
+		case ValveState::OPEN:
+			open();
 	}
 }
 
-VCU::ValveActuator::close() {
-	VCU::ValveActuator::valveOutput.turn_off();
-	VCU::ValveActuator::state = VCU::ValveActuator::State::CLOSED;
+void VCU::ValveActuator::close() {
+	valveOutput.turn_off();
+	state = ValveState::CLOSED;
 }
 
-VCU::ValveActuator::open() {
-	VCU::ValveActuator::valveOutput.turn_on();
-	VCU::ValveActuator::state = VCU::ValveActuator::State::OPEN;
+void VCU::ValveActuator::open() {
+	valveOutput.turn_on();
+	state = ValveState::OPEN;
 }
 
+VCU::ValveActuator::ValveState VCU::ValveActuator::getState() {
+	return state;
+}

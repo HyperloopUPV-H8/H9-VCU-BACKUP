@@ -5,13 +5,21 @@
  *      Author: amancio
  */
 
-#include <SENSORS/PRESSURE/RegulatorSensor.hpp>
+#include "RegulatorSensor.hpp"
 
+VCU::RegulatorSensor::RegulatorSensor() :
+	regulator(
+		Pinout::REGULATOR_IN,
+		regulatorSlope,
+		regulatorOffset,
+		&pressure
+	)
+{}
 
 float VCU::RegulatorSensor::getPressure() {
-	return VCU::RegulatorSensor::regulatorPressure;
+	return pressure;
 }
 
 void VCU::RegulatorSensor::read() {
-	VCU::RegulatorSensor::regulator.read();
+	regulator.read();
 }

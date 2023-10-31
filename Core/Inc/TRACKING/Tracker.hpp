@@ -10,32 +10,26 @@
 
 #pragma once
 
-	namespace VCU {
-		class Tracker {
+namespace VCU {
+	class Tracker {
 
-		public:
-			Tracker() :
-				TrackerEncoder(
-					Pinout2::TAPE1,Pinout2::TAPE2,
-					&position,&direction,&speed,&acceleration
-				)
-			{}
+	public:
+		Tracker();
 
-			void read();
+		void read();
 
-			float getPosition();
-			float getAcceleration();
-			float getSpeed();
-			float getDirection();
+		float getPosition();
+		float getAcceleration();
+		float getSpeed();
+		float getDirection();
 
-		private:
+	private:
+		EncoderSensor trackerEncoder;
 
-			EncoderSensor TrackerEncoder;
+		double position;
+		double direction;
+		double acceleration;
+		double speed;
 
-			float position;
-			float direction;
-			float acceleration;
-			float speed;
-
-		};
+	};
 }

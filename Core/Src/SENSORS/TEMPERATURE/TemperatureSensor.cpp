@@ -7,10 +7,19 @@
 
 #include <TemperatureSensor.hpp>
 
-float VCU::TemperatureSensor::getTemperature(){
-	return VCU::TemperatureSensor::enviromentalTemperature;
+VCU::TemperatureSensor::TemperatureSensor(float slope, float offset) :
+	sensor(
+		Pinout::ENVIRONMENT_TEMPERATURE,
+		slope,
+		offset,
+		&temperature
+	)
+{}
+
+float VCU::TemperatureSensor::getTemperature() {
+	return temperature;
 }
 
 void VCU::TemperatureSensor::read(){
-	VCU::TemperatureSensor::temperatureSensor.read();
+	sensor.read();
 }

@@ -24,7 +24,7 @@ namespace VCU {
 		void close();
 		void open();
 
-		ValveState getValveState();
+		ValveState getState();
 
 	private:
 		DigitalOutput valveOutput;

@@ -7,26 +7,31 @@
 
 #include "Tracker.hpp"
 
-VCU::Tracker::Tracker() {
-	VCU::Tracker::TrackerEncoder.start();
+VCU::Tracker::Tracker() :
+	trackerEncoder(
+		Pinout::TAPE1, Pinout::TAPE2,
+		&position, &direction, &speed, &acceleration
+	)
+{
+	trackerEncoder.start();
 }
 
 void VCU::Tracker::read() {
-	VCU::Tracker::TrackerEncoder.read();
+	trackerEncoder.read();
 }
 
 float VCU::Tracker::getPosition() {
-	return VCU::Tracker::position;
+	return position;
 }
 
 float VCU::Tracker::getAcceleration() {
-	return VCU::Tracker::acceleration;
+	return acceleration;
 }
 
 float VCU::Tracker::getSpeed() {
-	return VCU::Tracker::speed;
+	return speed;
 }
 
 float VCU::Tracker::getDirection() {
-	return VCU::Tracker::direction;
+	return direction;
 }

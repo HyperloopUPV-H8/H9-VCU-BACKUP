@@ -14,20 +14,13 @@ namespace VCU {
 
 	class RegulatorSensor {
 	public:
-		RegulatorSensor() :
-			regulator(
-				Pinout2::REGULATOR_IN,
-				regulatorSlope,
-				regulatorOffset,
-				&regulatorPressure
-			)
-		{}
+		RegulatorSensor();
 
 		void read();
 		float getPressure();
 
 	private:
-		float regulatorPressure;
+		float pressure;
 		LinearSensor<float> regulator;
 
 		constexpr static float regulatorSlope = 3.78787;

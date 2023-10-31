@@ -12,7 +12,8 @@
 namespace VCU {
 	class RegulatorActuator {
 	public:
-		RegulatorActuator(Pin& PWMPin, float& pressure);
+		RegulatorActuator(Pin& PWMPin, float pressure);
+		RegulatorActuator(Pin& PWMPin);
 
 		void setPressure(float newPressure);
 		float getPressure();
@@ -26,6 +27,6 @@ namespace VCU {
 		static constexpr float min_pressure = 0.0f;
 
 		PWM pwm;
-		float& pressure;
+		float pressure;
 	};
 }

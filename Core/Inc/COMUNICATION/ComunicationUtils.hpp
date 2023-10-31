@@ -1,3 +1,5 @@
+#include "IPV4.hpp"
+
 #pragma once
 
 namespace VCU{
